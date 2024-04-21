@@ -1,4 +1,4 @@
-import databases from "../../services/appwrite.js";
+import {account, databases} from "../../services/appwrite.js";
 import { ID } from 'appwrite'
 
 export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres, ClaveDeElector, Calle, Numero, Colonia, Telefono) {
@@ -18,10 +18,20 @@ export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres,
             Telefono: Telefono
         }
     )
-        .then(data => {console.log(data);return true})
-        .catch(data => {console.log(data); return false})
-
-
+        .then(data => {console.log(data);return true}) // Success
+        .catch(data => {console.log(data); return false}) //Failure
 }
 
+export async function createEmailSession( email, password ) {
+    await account.createEmailSession( email, password )
+
+        .then(data => {console.log(data);return true}) // Success
+        .catch(data => {console.log(data); return false}) //Failure
+}
+
+export function middleware() {
+    if (!localStorage.getItem('id').length > 0) {
+        console.log('Aqui se va a mandar a la pagina de login si el usuario no esta dado de alta con login')
+    }
+}
 

@@ -1,3 +1,37 @@
+/* styles.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Clases de animación para el modal */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Animación de entrada */
+.fadeIn {
+    animation: fadeIn 3s ease-in-out forwards;
+}
+
+@keyframes moveUp {
+    from { transform: translateY(0%) }
+    to  { transform: translateY(100%) }
+}
+
+@keyframes moveDown {
+    from { transform: translateY(0%)}
+    to { transform: translateY(-100%)}
+}
+
+.top-to-bottom {
+    animation: moveUp 0.3s ease-in-out forwards;
+}
+
+/* Animación de desplazamiento hacia abajo */
+.bottom-to-top {
+    animation: moveDown 0.3s ease-in-out forwards;
+}
+

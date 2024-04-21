@@ -7,5 +7,6 @@ client
     .setProject('66236e553affeb94ba62')
 
 const databases = new Databases(client)
+const account = new Account(client)
 
-export default databases
+export { databases, account}
