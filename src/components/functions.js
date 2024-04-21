@@ -23,10 +23,13 @@ export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres,
 }
 
 export async function createEmailSession( email, password ) {
-    await account.createEmailSession( email, password )
+    console.log('funcion')
+    /*await account.createEmailSession( email, password )
 
-        .then(data => {console.log(data);return true}) // Success
-        .catch(data => {console.log(data); return false}) //Failure
+        .then((data) => {console.log(data);return data}) // Success
+        .catch((data) => {console.log(data); return false}) //Failure*/
+        const promise = await account.createEmailSession( email, password )
+        return promise
 }
 
 export function middleware() {

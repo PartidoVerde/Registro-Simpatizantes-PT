@@ -13,28 +13,32 @@ function Login() {
 
 
 
-    const iniciarSession = e => {
+    async function iniciarSession (e) {
         e.preventDefault()
 
 
         if ([ email, password ].includes('')) {
             console.log('Usuario no encontrado');
         } else {
-             const createSesion =  createEmailSession(email, password)
+             /*const createSesion =  await createEmailSession(email, password)
                 .then((data) => {
                     console.log(data)
-                    localStorage.setItem('id', data.userId)
-                    localStorage.setItem('email', data.providerUid)
-                    navigate('/')
+                    //localStorage.setItem('id', data.userId)
+                    //localStorage.setItem('email', data.providerUid)
+                    //navigate('/form')
                 })
                 .catch(e => console.log(e))
+        }*/
+        try{
+            const promise = await createEmailSession(email,password)
+            console.log(promise)
+        }catch(e){console.log(e)}
         }
     }
 
     const redireccion = e => {
         e.preventDefault()
-
-        history.push('/')
+        navigate('/form')
     }
 
     if (user) {
@@ -43,7 +47,7 @@ function Login() {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen dark">
-            <form className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6" onSubmit={redireccion}>
+            <form className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6" onSubmit={iniciarSession}>
                 <h2 className="text-2xl font-bold text-gray-200 mb-4">Login</h2>
                 <div className="flex flex-col">
                     <input
