@@ -19,19 +19,13 @@ function Login() {
 
         if ([ email, password ].includes('')) {
             console.log('Usuario no encontrado');
-        } else {
-             /*const createSesion =  await createEmailSession(email, password)
-                .then((data) => {
-                    console.log(data)
-                    //localStorage.setItem('id', data.userId)
-                    //localStorage.setItem('email', data.providerUid)
-                    //navigate('/form')
-                })
-                .catch(e => console.log(e))
-        }*/
+        }else {
         try{
             const promise = await createEmailSession(email,password)
             console.log(promise)
+            localStorage.setItem('id', promise.userId)
+            localStorage.setItem('email', promise.providerUid)
+            navigate('/form')
         }catch(e){console.log(e)}
         }
     }
