@@ -1,6 +1,6 @@
 import '../../assets/input.css'
 
-const Modal = ({ message,  }) => {
+const ModalError = ({ message,  }) => {
 
     return (
         <div className="flex justify-center fadeIn">
@@ -12,4 +12,4 @@ const Modal = ({ message,  }) => {
     )
 }
 
-export default Modal
+export default ModalError

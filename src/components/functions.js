@@ -1,5 +1,8 @@
 import {account, databases} from "../../services/appwrite.js";
 import { ID } from 'appwrite'
+import { useNavigate } from 'react-router-dom'
+
+const navigate = useNavigate()
 
 export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres, ClaveDeElector, Calle, Numero, Colonia, Telefono) {
 
@@ -34,7 +37,7 @@ export async function createEmailSession( email, password ) {
 
 export function middleware() {
     if (!localStorage.getItem('id').length > 0) {
-        console.log('Aqui se va a mandar a la pagina de login si el usuario no esta dado de alta con login')
+        navigate('Login')
     }
 }
 

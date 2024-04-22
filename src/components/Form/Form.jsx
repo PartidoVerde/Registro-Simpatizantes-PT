@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { createDocument } from "../functions.js";
-import Modal from "../Modal/Modal.jsx";
+import {useEffect, useState} from "react";
+import {createDocument, middleware} from "../functions.js";
+import ModalError from "../Modals/ModalError.jsx";
 import '../../assets/input.css'
 
 function Form() {
@@ -46,7 +46,12 @@ function Form() {
 
         }
 
+
     }
+
+    useEffect(() => {
+        middleware()
+    }, []);
 
     return (
         <div className="flex flex-col items-center justify-center h-screen dark">
@@ -54,7 +59,7 @@ function Form() {
                 <h2 className="text-2xl font-bold text-gray-200 mb-4 moveUp">Registro de datos</h2>
                 <form className="flex flex-col" onSubmit={handleSubmit}>
                     { showModal &&
-                        <Modal
+                        <ModalError
                             message="Hay al menos un campo vacio"/>
                     }
                     <div className="flex space-x-2 mb-4 moveDown">
