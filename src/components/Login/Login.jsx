@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { createEmailSession } from "../functions.js";
 import {useNavigate} from "react-router-dom";
 
@@ -9,6 +9,7 @@ function Login() {
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
     const [ error, setError ] = useState(false)
+
     const user = localStorage.getItem('id')
 
 
@@ -20,30 +21,23 @@ function Login() {
         if ([ email, password ].includes('')) {
             console.log('Usuario no encontrado');
         } else {
-             /*const createSesion =  await createEmailSession(email, password)
-                .then((data) => {
-                    console.log(data)
-                    //localStorage.setItem('id', data.userId)
-                    //localStorage.setItem('email', data.providerUid)
-                    //navigate('/form')
-                })
-                .catch(e => console.log(e))
-        }*/
         try{
             const promise = await createEmailSession(email,password)
             console.log(promise)
+            localStorage.setItem('id', promise.userId)
+            localStorage.setItem('email', promise.providerUid)
+            navigate('/form')
         }catch(e){console.log(e)}
         }
     }
 
-    const redireccion = e => {
-        e.preventDefault()
-        navigate('/form')
-    }
-
-    if (user) {
-        console.log('User is logged')
-    }
+    useEffect(() => {
+        if (user) {
+            console.log('User is logged')
+            alert('El usuario ya inicio sesion')
+            navigate('/form')
+        }
+    }, []);
 
     return (
         <div className="flex flex-col items-center justify-center h-screen dark">

@@ -1,10 +1,7 @@
 import {account, databases} from "../../services/appwrite.js";
 import { ID } from 'appwrite'
-import { useNavigate } from 'react-router-dom'
 
-const navigate = useNavigate()
-
-export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres, ClaveDeElector, Calle, Numero, Colonia, Telefono) {
+export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres, ClaveDeElector, Calle, Numero, Colonia, Telefono, Grupo, Promotor) {
 
     await databases.createDocument(
         '66236f0d68ca1961f723',
@@ -18,7 +15,9 @@ export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres,
             Calle: Calle,
             Numero: Numero,
             Colonia: Colonia,
-            Telefono: Telefono
+            Telefono: Telefono,
+            Grupo: Grupo,
+            Promotor: Promotor
         }
     )
         .then(data => {console.log(data);return true}) // Success
@@ -35,9 +34,7 @@ export async function createEmailSession( email, password ) {
     }
 }
 
-export function middleware() {
-    if (!localStorage.getItem('id').length > 0) {
-        navigate('Login')
-    }
+export async function deleteSession(id) {
+    await account.deleteSession(id)
+    localStorage.clear()
 }
-
