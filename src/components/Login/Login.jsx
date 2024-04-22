@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createEmailSession } from "../functions.js";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 function Login() {
@@ -32,7 +32,6 @@ function Login() {
         try{
             const promise = await createEmailSession(email,password)
             console.log(promise)
-            navigate('/form')
         }catch(e){console.log(e)}
         }
     }
@@ -68,7 +67,7 @@ function Login() {
                             <div className="flex items-center justify-between flex-wrap">
                                 <label className="text-sm text-gray-200 cursor-pointer">
                                 </label>
-                                <Link className="text-white mt-4" to='/form'> Aun no tienes una cuenta? <a className="text-sm text-blue-500 -200 hover:underline mt-4" href="#">Registrate</a></Link>
+                                <p className="text-white mt-4"> Aun no tienes una cuenta? <a className="text-sm text-blue-500 -200 hover:underline mt-4" href="#">Registrate</a></p>
                             </div>
                             <button className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150" type="submit">Login</button>
                 </div>
