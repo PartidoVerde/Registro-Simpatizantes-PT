@@ -1,6 +1,6 @@
 import Header from "../Header/Header.jsx";
 import {useState} from "react";
-import {createAccount} from "../functions.js";
+import {crearUsuario, createAccount} from "../functions.js";
 
 export default function Register() {
     const [ email, setEmail ] = useState('')
@@ -9,15 +9,18 @@ export default function Register() {
     const createUser = (e) => {
         e.preventDefault()
 
-        try {
-            if (email !== '' && password !== '') {
-                const account =  createAccount(email, password)
-            } else {
-                alert('Hay al menos un campo vacio')
-            }
-        } catch (error) {
-            console.log('Error en la creacion del usuario:', error)
+        // if (email !== '' && password.length >= 8) {
+        //     const account =  createAccount(email, password)
+        // } else {
+        //     alert('Verifique el correo y contraseña, la contraseña debe de contener al menos 8 caracteres')
+        // }
+
+        if (email !== '' && password.length >= 8) {
+            const account =  crearUsuario(email, password)
+        } else {
+            alert('Verifique el correo y contraseña, la contraseña debe de contener al menos 8 caracteres')
         }
+
 
 
     }

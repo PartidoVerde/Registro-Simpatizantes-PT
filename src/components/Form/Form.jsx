@@ -49,6 +49,8 @@ function Form() {
             setTelefono('')
             setSeccion('')
 
+
+            alert('Datos enviados correctamente')
             console.log('Datos enviados correctamente')
 
         }

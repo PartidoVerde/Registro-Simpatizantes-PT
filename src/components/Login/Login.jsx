@@ -15,6 +15,8 @@ function Login() {
 
 
 
+
+
     async function iniciarSession (e) {
         e.preventDefault()
 
@@ -32,13 +34,15 @@ function Login() {
 
         const findUser = data.users.map(datos => {
             if (datos.email === email) {
-                console.log('Email encontrado')
+                console.log('Usuario correcto')
 
                 const promise = createEmailSession(email, password)
                 console.log(promise)
                 localStorage.setItem('id', datos.$id)
                 localStorage.setItem('email', datos.name)
                 navigate('/form')
+            } else {
+                console.error('Usuario no encontrado')
             }
         })
     }
