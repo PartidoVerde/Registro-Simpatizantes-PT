@@ -1,5 +1,5 @@
 import {account, databases} from "../../services/appwrite.js";
-import { ID } from 'appwrite'
+import {ID} from 'appwrite'
 
 export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres, ClaveDeElector, Calle, Numero, Colonia, Telefono, Grupo, Promotor) {
 

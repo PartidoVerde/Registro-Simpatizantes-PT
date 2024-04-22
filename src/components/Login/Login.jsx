@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import { createEmailSession } from "../functions.js";
+import {createEmailSession} from "../functions.js";
 import {useNavigate} from "react-router-dom";
 
 
@@ -17,18 +17,29 @@ function Login() {
     async function iniciarSession (e) {
         e.preventDefault()
 
+        const url = 'https://cloud.appwrite.io/v1/users'
 
-        if ([ email, password ].includes('')) {
-            console.log('Usuario no encontrado');
-        } else {
-        try{
-            const promise = await createEmailSession(email,password)
-            console.log(promise)
-            localStorage.setItem('id', promise.userId)
-            localStorage.setItem('email', promise.providerUid)
-            navigate('/form')
-        }catch(e){console.log(e)}
-        }
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Appwrite-Key': '5a65278f5fd8efcb4b79511634a962b5e30d94bcee17d875178165efaaf91e7e01010edd48423db72cadc24e13d424a103b0962b4b19c912e4b4e597626abac3ee76c1d5ecaf10778eee81d1c5ce9b7eea6ba091599b43b0d7a6268a2642dc9384c60131a7b73ce43712d7a5edcb133b16317fabe351866ad7b3a679671ff196',
+                'X-Appwrite-Project': '66236e553affeb94ba62',
+            }
+        })
+        const data = await response.json()
+
+        const findUser = data.users.map(datos => {
+            if (datos.email === email) {
+                console.log('Email encontrado')
+
+                const promise = createEmailSession(email, password)
+                console.log(promise)
+                localStorage.setItem('id', datos.$id)
+                localStorage.setItem('email', datos.name)
+                navigate('/form')
+            }
+        })
     }
 
     useEffect(() => {
@@ -67,8 +78,7 @@ function Login() {
                 </div>
             </form>
         </div>
-
-)
+    )
 }
 
 export default Login
