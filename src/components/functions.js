@@ -1,7 +1,7 @@
 import {account, databases} from "../../services/appwrite.js";
 import {ID} from 'appwrite'
 
-export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres, ClaveDeElector, Calle, Numero, Colonia, Telefono, Grupo, Promotor) {
+export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres, ClaveDeElector, Calle, Numero, Colonia, Telefono, Grupo, Promotor, Seccion) {
 
     await databases.createDocument(
         '66236f0d68ca1961f723',
@@ -17,7 +17,8 @@ export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres,
             Colonia: Colonia,
             Telefono: Telefono,
             Grupo: Grupo,
-            Promotor: Promotor
+            Promotor: Promotor,
+            Seccion: Seccion
         }
     )
         .then(data => {console.log(data);return true}) // Success
@@ -32,6 +33,11 @@ export async function createEmailSession( email, password ) {
         console.log(e)
         return false
     }
+}
+
+export async function createAccount ( email, password ) {
+    const promise = await account.create(ID.unique(), email, password)
+    console.log(promise)
 }
 
 export async function deleteSession(id) {

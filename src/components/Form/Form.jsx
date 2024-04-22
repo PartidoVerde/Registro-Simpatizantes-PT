@@ -17,13 +17,14 @@ function Form() {
     const [ showModal, setShowModal ] = useState(false)
     const [ grupo, setGrupo ] = useState('')
     const [ promotor, setPromotor ] = useState('')
+    const [ seccion, setSeccion ] = useState('')
 
     const navigate = useNavigate()
 
     const handleSubmit = e => {
         e.preventDefault()
 
-        if ( [ apellidoPaterno, apellidoMaterno, nombre, calle, numero, colonia, telefono, grupo, promotor ].includes('') ) {
+        if ( [ apellidoPaterno, apellidoMaterno, nombre, calle, numero, colonia, telefono, grupo, promotor, seccion ].includes('') ) {
 
             setShowModal(true)
 
@@ -36,7 +37,7 @@ function Form() {
 
         } else {
 
-            const CreateData = createDocument( apellidoPaterno, apellidoMaterno, nombre, claveDeElector, calle, numero, colonia, telefono, grupo, promotor )
+            const CreateData = createDocument( apellidoPaterno, apellidoMaterno, nombre, claveDeElector, calle, numero, colonia, telefono, grupo, promotor, seccion )
 
             setApellidoPaterno('')
             setApellidoMaterno('')
@@ -46,6 +47,7 @@ function Form() {
             setNumero('')
             setColonia('')
             setTelefono('')
+            setSeccion('')
 
             console.log('Datos enviados correctamente')
 
@@ -55,7 +57,11 @@ function Form() {
     }
 
     const cerrarSession =  async () => {
-        const id = localStorage.getItem('id')
+        const id = localStorage.removeItem('cookieFallback')
+        const deleteId = localStorage.removeItem('id')
+        const deleteEmail = localStorage.removeItem('email')
+
+        navigate('/')
 
         await deleteSession(id)
     }
@@ -71,14 +77,28 @@ function Form() {
 
     return (
         <>
-            <div className="flex justify-between items-center">
-                <button
-                    className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
-                    type="button"
-                    onClick={cerrarSession}
-                >
-                    Cerrar Sesion
-                </button>
+            <div className="flex h-20 w-full">
+                <div className='flex justify-end items-end w-full pr-4'>
+                    <button
+                        className="group flex items-center justify-start w-11 h-11 bg-red-600 rounded-full cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg hover:w-32 hover:rounded-lg active:translate-x-1 active:translate-y-1 mb-4"
+                        onClick={cerrarSession}
+                    >
+                        <div
+                            className="flex items-center justify-center w-full transition-all duration-300 group-hover:justify-start group-hover:px-3"
+                        >
+                            <svg className="w-4 h-4" viewBox="0 0 512 512" fill="white">
+                                <path
+                                    d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <div
+                            className="absolute right-5 transform translate-x-full opacity-0 text-white text-lg font-semibold transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                        >
+                            Logout
+                        </div>
+                    </button>
+                </div>
             </div>
             <div className="flex flex-col items-center justify-center h-screen dark">
                 <div
@@ -135,13 +155,22 @@ function Form() {
                                 onChange={event => setNumero(event.target.value)}
                             />
                         </div>
-                        <input
-                            placeholder="Colonia"
-                            className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                            type="text"
-                            value={colonia}
-                            onChange={event => setColonia(event.target.value)}
-                        />
+                        <div className="flex space-x-2 mb-4">
+                            <input
+                                placeholder="Colonia"
+                                className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-3/4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                                type="text"
+                                value={colonia}
+                                onChange={event => setColonia(event.target.value)}
+                            />
+                            <input
+                                placeholder="Seccion"
+                                className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                                type="number"
+                                value={seccion}
+                                onChange={event => setSeccion(event.target.value)}
+                            />
+                        </div>
                         <input
                             placeholder="Telefono"
                             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
