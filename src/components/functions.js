@@ -60,7 +60,7 @@ export async function crearUsuario(email, password, name) {
                 'X-Appwrite-Project': '66236e553affeb94ba62',
                 'X-Appwrite-Key': 'c397e658c8a0ec564c79a28347d96a5c34392cead8eef63d75b0601f79e3ee2704644660d7c7550444190be2a89c481f55e98ad4af021c39e99d9c8f02c35bd4647576c5dc476c759b0dd9949545262d0f9eeeb7c7a4ace9150729308cd4ea2dd2bac25e7618854c7905f172bbdc78c40360cfc6b8ce1064793b30bc9909f29d'
             },
-            body: JSON.stringify({userId: ID.unique(),email: email, password: password, name: 'Eduardo' })
+            body: JSON.stringify({userId: ID.unique(),email: email, password: password })
         })
         const data = await response.json()
 
