@@ -1,28 +1,23 @@
 import Header from "../Header/Header.jsx";
 import {useState} from "react";
 import {crearUsuario, createAccount} from "../functions.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+    const navigate = useNavigate();
+
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
 
     const createUser = (e) => {
         e.preventDefault()
 
-        // if (email !== '' && password.length >= 8) {
-        //     const account =  createAccount(email, password)
-        // } else {
-        //     alert('Verifique el correo y contraseña, la contraseña debe de contener al menos 8 caracteres')
-        // }
-
         if (email !== '' && password.length >= 8) {
             const account =  crearUsuario(email, password)
         } else {
             alert('Verifique el correo y contraseña, la contraseña debe de contener al menos 8 caracteres')
         }
-
-
-
+        navigate('/')
     }
 
     return (

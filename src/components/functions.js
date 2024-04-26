@@ -18,7 +18,8 @@ export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres,
             Telefono: Telefono,
             Grupo: Grupo,
             Promotor: Promotor,
-            Seccion: Seccion
+            Seccion: Seccion,
+            NombreCapturador: localStorage.getItem('name')
         }
     )
         .then(data => {console.log(data);return true}) // Success

@@ -61,7 +61,7 @@ function Form() {
     const cerrarSession =  async () => {
         const id = localStorage.removeItem('cookieFallback')
         const deleteId = localStorage.removeItem('id')
-        const deleteEmail = localStorage.removeItem('email')
+        const deleteEmail = localStorage.removeItem('name')
 
         navigate('/')
 
@@ -152,7 +152,7 @@ function Form() {
                             <input
                                 placeholder="Numero"
                                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                                type="text"
+                                type="number"
                                 value={numero}
                                 onChange={event => setNumero(event.target.value)}
                             />
