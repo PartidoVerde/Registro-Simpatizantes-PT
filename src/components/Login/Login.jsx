@@ -39,7 +39,7 @@ function Login() {
                 const promise = createEmailSession(email, password)
                 console.log(promise)
                 localStorage.setItem('id', datos.$id)
-                localStorage.setItem('email', datos.name)
+                localStorage.setItem('name', datos.name)
                 navigate('/form')
             } else {
                 console.error('Usuario no encontrado')
