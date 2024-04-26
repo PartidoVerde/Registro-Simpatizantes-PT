@@ -39,7 +39,7 @@ function Login() {
                 const promise = createEmailSession(email, password)
                 console.log(promise)
                 localStorage.setItem('id', datos.$id)
-                localStorage.setItem('email', datos.name)
+                localStorage.setItem('name', datos.name)
                 navigate('/form')
             } else {
                 console.error('Usuario no encontrado')
@@ -79,7 +79,7 @@ function Login() {
                             <div className="flex flex-wrap">
                                 <label className="text-sm text-gray-200 cursor-pointer">
                                 </label>
-                                <p className="text-white mt-4"> Aun no tienes una cuenta? <Link to='/Register' className="text-sm text-blue-500 -200 hover:underline mt-4">Registrate</Link></p>
+                                {/*<p className="text-white mt-4"> Aun no tienes una cuenta? <Link to='/Register' className="text-sm text-blue-500 -200 hover:underline mt-4">Registrate</Link></p>*/}
                             </div>
                             <button className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150" type="submit">Login</button>
                 </div>
