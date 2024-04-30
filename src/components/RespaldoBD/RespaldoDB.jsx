@@ -9,7 +9,7 @@ export function RespaldoDB() {
             '66236f0d68ca1961f723',
             '66236f14ea5d5305d59d',
             [
-                Query.limit(1200),
+                Query.limit(3500),
                 Query.offset(0)
             ]
         )
