@@ -117,14 +117,14 @@ function Form() {
                                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                                 type="text"
                                 value={apellidoPaterno}
-                                onChange={event => setApellidoPaterno(event.target.value)}
+                                onChange={event => setApellidoPaterno(event.target.value.toUpperCase())}
                             />
                             <input
                                 placeholder="Apellido Materno"
                                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                                 type="text"
                                 value={apellidoMaterno}
-                                onChange={event => setApellidoMaterno(event.target.value)}
+                                onChange={event => setApellidoMaterno(event.target.value.toUpperCase())}
                             />
                         </div>
                         <input
@@ -132,14 +132,14 @@ function Form() {
                             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                             type="text"
                             value={nombre}
-                            onChange={event => setNombre(event.target.value)}
+                            onChange={event => setNombre(event.target.value.toUpperCase())}
                         />
                         <input
                             placeholder="Clave de Elector"
                             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                             type="text"
                             value={claveDeElector}
-                            onChange={evento => setClaveDeElector(evento.target.value)}
+                            onChange={evento => setClaveDeElector(evento.target.value.toUpperCase())}
                         />
                         <div className="flex space-x-2 mb-4">
                             <input
@@ -147,14 +147,14 @@ function Form() {
                                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-3/4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                                 type="text"
                                 value={calle}
-                                onChange={event => setCalle(event.target.value)}
+                                onChange={event => setCalle(event.target.value.toUpperCase())}
                             />
                             <input
                                 placeholder="Numero"
                                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                                type="number"
+                                type="text"
                                 value={numero}
-                                onChange={event => setNumero(event.target.value)}
+                                onChange={event => setNumero(event.target.value.toUpperCase())}
                             />
                         </div>
                         <div className="flex space-x-2 mb-4">
@@ -163,14 +163,14 @@ function Form() {
                                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-3/4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                                 type="text"
                                 value={colonia}
-                                onChange={event => setColonia(event.target.value)}
+                                onChange={event => setColonia(event.target.value.toUpperCase())}
                             />
                             <input
                                 placeholder="Seccion"
                                 className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                                 type="number"
                                 value={seccion}
-                                onChange={event => setSeccion(event.target.value)}
+                                onChange={event => setSeccion(event.target.value.toUpperCase())}
                             />
                         </div>
                         <input
@@ -178,7 +178,7 @@ function Form() {
                             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                             type="number"
                             value={telefono}
-                            onChange={event => setTelefono(event.target.value)}
+                            onChange={event => setTelefono(event.target.value.toUpperCase())}
                         />
                         <label className="text-sm mb-2 text-gray-200 cursor-pointer" htmlFor="gender">
                             Grupo
@@ -187,7 +187,7 @@ function Form() {
                             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                             id="Grupo"
                             value={grupo}
-                            onChange={event => setGrupo(event.target.value)}
+                            onChange={event => setGrupo(event.target.value.toUpperCase())}
                         >
                             <option value="">Seleccione</option>
 
@@ -206,7 +206,7 @@ function Form() {
                             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-full focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                             type="text"
                             value={promotor}
-                            onChange={event => setPromotor(event.target.value)}
+                            onChange={event => setPromotor(event.target.value.toUpperCase())}
                         />
                         <button
                             className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"

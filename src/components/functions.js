@@ -13,12 +13,12 @@ export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres,
             Nombres: Nombres,
             ClaveDeElector: ClaveDeElector,
             Calle: Calle,
-            Numero: Numero,
+            Numero: Number(Numero),
             Colonia: Colonia,
-            Telefono: Telefono,
+            Telefono: Number(Telefono),
             Grupo: Grupo,
             Promotor: Promotor,
-            Seccion: Seccion,
+            Seccion: Number(Seccion),
             NombreCapturador: localStorage.getItem('name')
         }
     )
