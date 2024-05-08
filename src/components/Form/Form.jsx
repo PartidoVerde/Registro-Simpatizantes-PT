@@ -58,6 +58,12 @@ function Form() {
 
     }
 
+    const limitarA10Numeros = (e) => {
+        let valor = e.target.value.trim();
+        valor = valor.replace(/\D/g, ''); // Elimina cualquier carácter que no sea un número
+        setTelefono(valor.slice(0, 10)); // Limita la longitud a 10 caracteres
+    };
+
     const cerrarSession =  async () => {
         const id = localStorage.removeItem('cookieFallback')
         const deleteId = localStorage.removeItem('id')
@@ -177,8 +183,9 @@ function Form() {
                             placeholder="Telefono"
                             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                             type="number"
+                            maxLength="10"
                             value={telefono}
-                            onChange={event => setTelefono(event.target.value.toUpperCase())}
+                            onChange={limitarA10Numeros}
                         />
                         <label className="text-sm mb-2 text-gray-200 cursor-pointer" htmlFor="gender">
                             Grupo
@@ -187,7 +194,7 @@ function Form() {
                             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                             id="Grupo"
                             value={grupo}
-                            onChange={event => setGrupo(event.target.value.toUpperCase())}
+                            onChange={event => setGrupo(event.target.value)}
                         >
                             <option value="">Seleccione</option>
 

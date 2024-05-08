@@ -8,7 +8,7 @@ function App() {
   return (
     <>
         {/*<MainRouter/>*/}
-        <RespaldoDB/>
+        <ConsultaDatos/>
     </>
   )
 }
