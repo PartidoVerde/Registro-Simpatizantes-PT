@@ -6,8 +6,7 @@ const Grupos = [
     {value: 'Grupo 5 Jorge Unda y Annie', label: 'Grupo 5 Jorge Unda y Annie'},
     {value: 'Grupo 6 Candidato', label: 'Grupo 6 Candidato'},
     {value: 'Grupo 7 Madrina', label: 'Grupo 7 Madrina'},
-    {value: 'Grupo 8 Carmen Romero', label: 'Grupo 8 Carmen Romero'},
-    // {value: 'Grupo 9', label: 'Grupo 9 '},
+    {value: 'Grupo 8 Barany Robles', label: 'Grupo 8 Barany Robles'},
 
 ]
 
