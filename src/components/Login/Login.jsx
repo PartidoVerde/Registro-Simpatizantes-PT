@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {createEmailSession} from "../functions.js";
 import {Link, useNavigate} from "react-router-dom";
 import Header from "../Header/Header.jsx";
+import {account} from "../../../services/appwrite.js";
 
 
 function Login() {
@@ -42,7 +43,7 @@ function Login() {
                 localStorage.setItem('name', datos.name)
                 navigate('/form')
             } else {
-                console.error('Usuario no encontrado')
+                console.error('Verificar contraseña o correo electronico')
             }
         })
     }

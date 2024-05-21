@@ -30,8 +30,8 @@ export async function createEmailSession( email, password ) {
     try{
         const promise = await account.createEmailSession( email, password )
         return promise
-    }catch(e){
-        console.log(e)
+    }catch(error){
+        console.log(error)
         return false
     }
 }
