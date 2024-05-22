@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {createDocument, deleteSession} from "../functions.js";
+import {createDocument, deleteSessions} from "../functions.js";
 import ModalError from "../Modals/ModalError.jsx";
 import '../../assets/input.css'
 import {useNavigate} from "react-router-dom";
@@ -68,10 +68,7 @@ function Form() {
         const id = localStorage.removeItem('cookieFallback')
         const deleteId = localStorage.removeItem('id')
         const deleteEmail = localStorage.removeItem('name')
-
         navigate('/')
-
-        await deleteSession(id)
     }
 
     useEffect(() => {

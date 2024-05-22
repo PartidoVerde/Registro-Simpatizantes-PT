@@ -1,6 +1,7 @@
 import {account, databases} from "../../services/appwrite.js";
 import {ID} from 'appwrite'
 
+// Crear Documento en la base de datos
 export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres, ClaveDeElector, Calle, Numero, Colonia, Telefono, Grupo, Promotor, Seccion) {
 
     await databases.createDocument(
@@ -26,6 +27,7 @@ export async function createDocument( ApellidoPaterno, ApellidoMaterno, Nombres,
         .catch(data => {console.log(data); return false}) //Failure
 }
 
+// Crear session
 export async function createEmailSession( email, password ) {
     try{
         const promise = await account.createEmailSession( email, password )
@@ -36,6 +38,7 @@ export async function createEmailSession( email, password ) {
     }
 }
 
+// Crear cuenta
 export async function createAccount ( email, password ) {
     try {
         const promise = await account.create(ID.unique(), email, password)
@@ -43,13 +46,19 @@ export async function createAccount ( email, password ) {
     } catch (error) {
         console.error('Error la crear los datos:', error)
     }
-
 }
 
-export async function deleteSession(id) {
-    await account.deleteSession(id)
+// Eliminar sessiones activas
+export async function deleteSessions() {
+    try {
+        await account.deleteSessions()
+    } catch (error) {
+        console.log('Error al cerrar sessiones: ', error)
+    }
 }
-export async function crearUsuario(email, password, name) {
+
+// Crea usuario a traves de protocolo api
+export async function crearUsuario( email, password, name) {
 
     try {
         const url = 'https://cloud.appwrite.io/v1/users'
@@ -72,5 +81,10 @@ export async function crearUsuario(email, password, name) {
     } catch (error) {
         console.log('Error al crear el usuario:', error)
     }
+}
 
+// Obtener sessiones activas
+export async function obtenerSession() {
+    const session = await account.listSessions()
+    return session
 }
